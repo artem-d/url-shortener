@@ -6,6 +6,8 @@ gem 'rails', '4.1.0'
 
 gem 'mongoid'
 gem 'bson_ext'
+gem 'sorcery'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
