@@ -7,7 +7,9 @@ gem 'rails', '4.1.0'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'sorcery'
-
+gem 'moped', github: 'mongoid/moped'
+gem 'awesome_print'
+gem 'byebug'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
