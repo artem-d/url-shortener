@@ -1,5 +1,9 @@
-<h1>New link</h1>
-
 <%= render 'form' %>
 
-<%= link_to 'Back', links_path %>
+<% if @user_links.present? %>
+  <h1>Recent user links</h1>
+  <%= render 'recent_links', links: @user_links %>
+<% end %>
+
+<h1>Recent links</h1>
+<%= render 'recent_links', links: @links %>

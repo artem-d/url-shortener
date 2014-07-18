@@ -1,4 +1,4 @@
-<%= form_for(@link) do |f| %>
+<%= form_for @link do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
@@ -12,18 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :in_url %><br>
+    <%= f.label :in_url, "Paste your long URL here:" %><br>
     <%= f.text_field :in_url %>
   </div>
-  <div class="field">
-    <%= f.label :out_url %><br>
-    <%= f.text_field :out_url %>
-  </div>
-  <div class="field">
-    <%= f.label :clicks %><br>
-    <%= f.number_field :clicks %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Shorten URL" %>
   </div>
 <% end %>

@@ -18,6 +18,14 @@ class Link
     BASE_URL + self.out_url
   end
 
+  def self.recent
+    order("created_at DESC").limit(10)
+  end
+  
+  def self.recent_for_user(user)
+    where(user_id: user.id).order("created_at DESC").limit(10)
+  end
+
   private
     def generate_out_url
       self.out_url = Time.now.to_i.to_s(36)

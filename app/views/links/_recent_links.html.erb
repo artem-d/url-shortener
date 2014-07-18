@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>LONG URL</th>
+      <th>SHORT URL</th>
+      <th>CLICKS</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% links.each do |link| %>
+      <tr>
+        <td><%= link.in_url %></td>
+        <td><%= link_to link.display_out_url, link.display_out_url %></td>
+        <td><%= link.clicks %></td>
+        <% if link.user_id.present? and link.user_id == current_user.try(:id) %>
+          <td><%= link_to 'Remove', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

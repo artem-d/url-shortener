@@ -1,4 +1,34 @@
-<h1>Listing links</h1>
+<% if @user_links.present? %>
+  <h1>Recent user links</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>In url</th>
+        <th>Out url</th>
+        <th>Clicks</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user_links.each do |link| %>
+        <tr>
+          <td><%= link.in_url %></td>
+          <td><%= link_to link.display_out_url %></td>
+          <td><%= link.clicks %></td>
+          <td><%= link_to 'Show', link %></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %></td>
+          <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+<% end %>
+
+<h1>Recent links</h1>
 
 <table>
   <thead>
@@ -14,11 +44,13 @@
     <% @links.each do |link| %>
       <tr>
         <td><%= link.in_url %></td>
-        <td><%= link.display_out_url %></td>
+        <td><%= link_to link.display_out_url %></td>
         <td><%= link.clicks %></td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if link.user_id.present? and link.user_id == current_user.try(:id) %>
+          <td><%= link_to 'Show', link %></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %></td>
+          <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

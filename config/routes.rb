@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  root :to => 'links#index'
+  root :to => 'links#new'
 
-  resources :links
+  resources :links, only: [:new, :create, :destroy]
   resources :user_sessions
   resources :users
 
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
+  get ':out_url' => 'links#go'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
