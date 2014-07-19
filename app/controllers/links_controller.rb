@@ -15,7 +15,10 @@ class LinksController < ApplicationController
   def new
     @link = Link.new
     @links = Link.recent
-    @user_links = Link.recent_for_user(current_user) if logged_in?
+    if logged_in?
+      @user_links = Link.recent_for_user(current_user)
+      @links_excluding_user_links = Link.recent.excluding_links_of_user(current_user)
+    end
   end
 
   # POST /links

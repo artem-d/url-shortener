@@ -3,7 +3,9 @@
 <% if @user_links.present? %>
   <h1>Recent user links</h1>
   <%= render 'recent_links', links: @user_links %>
+  <h1>Recent links</h1>
+  <%= render 'recent_links', links: @links_excluding_user_links %>
+<% else %>
+  <h1>Recent links</h1>
+  <%= render 'recent_links', links: @links %>
 <% end %>
-
-<h1>Recent links</h1>
-<%= render 'recent_links', links: @links %>
